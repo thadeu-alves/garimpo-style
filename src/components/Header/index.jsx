@@ -22,15 +22,13 @@ export default function Header(){
                 </div>
 
                 <ul class="flex gap-4">
-                    <li class="text-white font-bold text-sm">
-                        <div>
+                    <li class="">
                         <a href="https://www.tiktok.com/@garimpostyle_">
-                        <div 
-                        className="bg-gray-300 min-h-8 min-w-8 rounded-full p-2">
-                            <SvgComponent />
-                        </div>
+                            <div 
+                            className="bg-gray-300 w-10 h-10 rounded-full p-2">
+                                <SvgComponent className="w-full h-full" />
+                            </div>
                         </a>
-                        </div>
                     </li>
                 </ul>
             </nav>
