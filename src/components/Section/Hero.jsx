@@ -1,7 +1,7 @@
 export default function Hero(){
     return (
         <section class="bg-gray-900 w-full max-w-5xl flex flex-col justify-center items-center rounded">
-            <div class="py-8 px-3 lg:flex lg:items-center md:py-32">
+            <div class="py-24 px-3 lg:flex lg:items-center md:py-32">
                 <div class="mx-auto max-w-3xl text-center">
                     <h1
                         class="font-serif text-white bg-clip-text text-lg font-extrabold sm:text-xl lg:text-5xl"
@@ -11,7 +11,7 @@ export default function Hero(){
                         <span class="sm:block"> Nosso Palco de Elegância. </span>
                     </h1>
 
-                    <p class="font-[sans-serif] text-xs text-gray-300 mx-auto mt-4 max-w-xl sm:text-xl/relaxed">
+                    <p class="font-[sans-serif] text-[10px] text-gray-300 mx-auto mt-4 max-w-xl sm:text-xl/relaxed">
                     Destaque sua marca em um ambiente que respira sofisticação e exclusividade. 
                     </p>
 
