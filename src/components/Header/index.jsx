@@ -6,9 +6,11 @@ export default function Header(){
         <header class=" bg-gray-800  py-2.5 px-4 flex justify-center">
             <nav className="flex justify-between items-center w-full max-w-6xl">
                 <div className="flex items-center justify-center gap-2">
-                    <h1 
-                    class="text-gray-400 font-serif text-lg font-bold sm:text-2xl"
-                    >Garimpo Style</h1>
+                    <a href="/">
+                        <h1 
+                        class="text-gray-400 font-serif text-lg font-bold sm:text-2xl"
+                        >Garimpo Style</h1>
+                    </a>
                     
                     <span className="text-gray-300 font-bold">+</span>
 

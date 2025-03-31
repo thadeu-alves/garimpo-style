@@ -1,0 +1,40 @@
+---
+import '../styles/global.css';
+import Layout from '../layouts/Layout.astro';
+import getAllData from '../lib/data.js';
+import AllProductsList from '../components/AllProductsList/index.jsx';
+import Header from '../components/Header';
+import Footer from '../components/Footer';
+
+
+
+
+
+const {categoria} = Astro.params;
+
+export async function getStaticPaths() {
+  const categorias = ['superiores', 'inferiores', 'acessorios', 'calcados', 'test'];
+  
+  return categorias.map(categoria => ({
+    params: { categoria },
+  }));
+}
+
+let tag = "";
+
+switch(categoria){
+    case "superiores": tag = "tp"; break;
+    case "inferiores": tag = "bx"; break;
+    case "acessorios": tag = "ac"; break;
+    case "calcados": tag = "cl"; break;
+    default: tag = ""; break;
+}
+
+const products = await getAllData(tag, false);
+---
+
+<Layout>
+    <Header />
+    <AllProductsList products={products} ctg={categoria}/>
+    <Footer />
+</Layout>
