@@ -10,7 +10,7 @@ import Footer from '../components/Footer';
 const {categoria} = Astro.params;
 
 export async function getStaticPaths() {
-  const categorias = ['superiores', 'inferiores', 'acessorios', 'calcados', 'test', 'perfumes'];
+  const categorias = ['superiores', 'inferiores', 'acessorios', 'calcados', 'perfumes'];
   
   return categorias.map(categoria => ({
     params: { categoria },
