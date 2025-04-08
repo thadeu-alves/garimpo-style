@@ -5,6 +5,7 @@ export default function Section({products = []}){
     const top = [];
     const back = [];
     const calc = [];
+    const perf = [];
     const ace = [];
 
     products.forEach((product) => {
@@ -14,6 +15,8 @@ export default function Section({products = []}){
             back.push(product);
         }else if(product.slug == "cl" && calc.length != 4){
             calc.push(product);
+        }else if(product.slug == "pf" && perf.length != 4){
+            perf.push(product);
         }else if(product.slug == "ac" && ace.length != 4){
             ace.push(product);
         }
@@ -31,6 +34,7 @@ export default function Section({products = []}){
                 <ProductsList products={top} field="Superiores" link="superiores"/>
                 <ProductsList products={back} field="Inferiores" link="inferiores"/>
                 <ProductsList products={calc} field="Calçados" link="calcados"/>
+                <ProductsList products={perf} field="Perfumes" link="perfumes"/>
                 <ProductsList products={ace} field="Acessórios" link="acessorios"/>
             </div>
 

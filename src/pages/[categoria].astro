@@ -1,19 +1,16 @@
 ---
 import '../styles/global.css';
 import Layout from '../layouts/Layout.astro';
-import getAllData from '../lib/data.js';
+import {getDataBySlug} from '../lib/data.js';
 import AllProductsList from '../components/AllProductsList/index.jsx';
 import Header from '../components/Header';
 import Footer from '../components/Footer';
 
 
-
-
-
 const {categoria} = Astro.params;
 
 export async function getStaticPaths() {
-  const categorias = ['superiores', 'inferiores', 'acessorios', 'calcados', 'test'];
+  const categorias = ['superiores', 'inferiores', 'acessorios', 'calcados', 'test', 'perfumes'];
   
   return categorias.map(categoria => ({
     params: { categoria },
@@ -27,10 +24,11 @@ switch(categoria){
     case "inferiores": tag = "bx"; break;
     case "acessorios": tag = "ac"; break;
     case "calcados": tag = "cl"; break;
+    case "perfumes": tag = "pf"; break;
     default: tag = ""; break;
 }
 
-const products = await getAllData(tag, true);
+const products = await getDataBySlug(tag);
 ---
 
 <Layout>
