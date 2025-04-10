@@ -4,15 +4,16 @@ import Layout from '../layouts/Layout.astro';
 import Header from '../components/Header/index.jsx';
 import Section from '../components/Section/index.jsx';
 import Footer from '../components/Footer/index.jsx';
-import {getAllData} from '../lib/data.js'
+import {getAllCategories} from '../lib/data.js'
 
-const products = await getAllData();
+
+const allCategorias = await getAllCategories();
 ---
 
 <Layout>
 	<Header />
 
-	<Section products={products}/>
+	<Section categories={allCategorias}/>
 
 	<Footer />
 </Layout>

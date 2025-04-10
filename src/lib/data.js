@@ -1,8 +1,8 @@
-export async function getAllData(){
-	const API_URL = "https://graphql.datocms.com/";
-	const API_TOKEN = "b9b8e250b7d589467a15aacd45e236";
+export async function getAllData() {
+    const API_URL = 'https://graphql.datocms.com/';
+    const API_TOKEN = 'b9b8e250b7d589467a15aacd45e236';
 
-	const query = `
+    const query = `
 	{
 		allProdutos(first: 100) {
 			title
@@ -16,27 +16,26 @@ export async function getAllData(){
 	}
 	`;
 
-	const response = await fetch(API_URL, {
-	method: "POST",
-	headers: {
-		"Content-Type": "application/json",
-		"Authorization": `Bearer ${API_TOKEN}`
-	},
-	body: JSON.stringify({ query }),
-	});
+    const response = await fetch(API_URL, {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+            Authorization: `Bearer ${API_TOKEN}`,
+        },
+        body: JSON.stringify({ query }),
+    });
 
-	const { data } = await response.json();
-	const products = data.allProdutos;
+    const { data } = await response.json();
+    const products = data.allProdutos;
 
-	return products;
-
+    return products;
 }
 
-export async function getDataBySlug(slug){
-	const API_URL = "https://graphql.datocms.com/";
-	const API_TOKEN = "b9b8e250b7d589467a15aacd45e236";
+export async function getDataBySlug(slug) {
+    const API_URL = 'https://graphql.datocms.com/';
+    const API_TOKEN = 'b9b8e250b7d589467a15aacd45e236';
 
-	const query = `
+    const query = `
 	{
 		allProdutos(first: 100, filter: {slug: {eq: ${slug}}}) {
 			title
@@ -50,17 +49,46 @@ export async function getDataBySlug(slug){
 	}
 	`;
 
-	const response = await fetch(API_URL, {
-	method: "POST",
-	headers: {
-		"Content-Type": "application/json",
-		"Authorization": `Bearer ${API_TOKEN}`
-	},
-	body: JSON.stringify({ query }),
-	});
+    const response = await fetch(API_URL, {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+            Authorization: `Bearer ${API_TOKEN}`,
+        },
+        body: JSON.stringify({ query }),
+    });
 
-	const { data } = await response.json();
-	const products = data.allProdutos;
+    const { data } = await response.json();
+    const products = data.allProdutos;
 
-	return products;
+    return products;
+}
+
+export async function getAllCategories() {
+    const API_URL = 'https://graphql.datocms.com/';
+    const API_TOKEN = 'b9b8e250b7d589467a15aacd45e236';
+
+    const query = `
+	{
+		allCategories(orderBy: _createdAt_ASC) {
+            slug
+            title
+            url
+        }
+	}
+	`;
+
+    const response = await fetch(API_URL, {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+            Authorization: `Bearer ${API_TOKEN}`,
+        },
+        body: JSON.stringify({ query }),
+    });
+
+    const { data } = await response.json();
+    const categories = data.allCategories;
+
+    return categories;
 }

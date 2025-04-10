@@ -1,38 +1,46 @@
 ---
 import '../styles/global.css';
 import Layout from '../layouts/Layout.astro';
-import {getDataBySlug} from '../lib/data.js';
+import {getAllCategories, getDataBySlug} from '../lib/data.js';
 import AllProductsList from '../components/AllProductsList/index.jsx';
 import Header from '../components/Header';
 import Footer from '../components/Footer';
+import { nan } from 'astro:schema';
 
+interface Category {
+  url: string;
+  title: string;
+  slug: string;
+}
 
 const {categoria} = Astro.params;
 
 export async function getStaticPaths() {
-  const categorias = ['superiores', 'inferiores', 'acessorios', 'calcados', 'perfumes'];
+    const allCategorias = await getAllCategories() as Category[];
+    const allCategoriesUrl = allCategorias.map((e) => e.url);
   
-  return categorias.map(categoria => ({
+  return allCategoriesUrl.map(categoria => ({
     params: { categoria },
   }));
 }
 
 let tag = "";
+let name = "";
 
-switch(categoria){
-    case "superiores": tag = "tp"; break;
-    case "inferiores": tag = "bx"; break;
-    case "acessorios": tag = "ac"; break;
-    case "calcados": tag = "cl"; break;
-    case "perfumes": tag = "pf"; break;
-    default: tag = ""; break;
-}
+const allCategorias = await getAllCategories() as Category[];
+allCategorias.map((e:Category) => {
+    if(e.url == categoria){
+        tag = e.slug;
+        name = e.title;
+    }
+})
 
 const products = await getDataBySlug(tag);
 ---
 
 <Layout>
     <Header />
-    <AllProductsList products={products} ctg={categoria}/>
+    <div class="mt-10"></div>
+    <AllProductsList products={products} ctg={categoria} name={name}/>
     <Footer />
 </Layout>
