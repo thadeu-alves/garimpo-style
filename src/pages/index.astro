@@ -5,6 +5,9 @@ import Header from '../components/Header/index.jsx';
 import Section from '../components/Section/index.jsx';
 import Footer from '../components/Footer/index.jsx';
 import {getAllCategories} from '../lib/data.js'
+import Hero from '../components/Section/Hero';
+import ProductsList from '../components/Section/ProductsList';
+import type { Category } from './[categoria].astro';
 
 
 const allCategorias = await getAllCategories();
@@ -13,7 +16,29 @@ const allCategorias = await getAllCategories();
 <Layout>
 	<Header />
 
-	<Section categories={allCategorias}/>
+	<Section >
+        <Hero client:load />
+
+        <div class="w-full max-w-5xl flex flex-col items-center gap-4 text-center">
+            <h1 class=" text-white text-4xl font-bold">
+                Todos os produtos
+            </h1>
+            <p class="text-gray-300">
+                Aqui, você tem acesso a uma curadoria
+                exclusiva de todos os produtos
+                disponíveis.
+            </p>
+            {allCategorias.map((c : Category) => {
+                return (
+                    <ProductsList
+                        slug={c.slug}
+                        field={c.title}
+                        link={c.url}
+                    />
+                );
+            })}
+        </div>
+    </Section>
 
 	<Footer />
 </Layout>
