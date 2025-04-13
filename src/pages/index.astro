@@ -30,7 +30,7 @@ const allCategorias = await getAllCategories();
             </p>
             {allCategorias.map((c : Category) => {
                 return (
-                    <ProductsList transition:name="products"
+                    <ProductsList
                         slug={c.slug}
                         field={c.title}
                         link={c.url}

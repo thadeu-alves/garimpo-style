@@ -49,7 +49,7 @@ export default function Hero() {
                     </p>
                     <div className="mt-8 flex flex-wrap justify-center gap-4">
                         <a
-                            className="block w-full rounded-sm border border-orange-600 bg-orange-600 px-12 py-3 text-sm font-medium text-white hover:bg-transparent hover:text-orange-600 focus:ring-3 focus:outline-none sm:w-auto"
+                            className="block w-full rounded-sm border border-red-900 bg-red-900 px-12 py-3 text-sm font-medium text-white hover:bg-transparent hover:text-red-900 focus:ring-3 focus:outline-none sm:w-auto"
                             href="https://s.shopee.com.br/10oqqlRf7I"
                         >
                             Shop Now
@@ -58,7 +58,6 @@ export default function Hero() {
                 </>
             ),
         },
-        // Slide 3: TikTok (novo gradiente ciano-rosa, texto branco)
         {
             content: (
                 <>
@@ -72,7 +71,7 @@ export default function Hero() {
                     </p>
                     <div className="mt-8 flex flex-wrap justify-center gap-4">
                         <a
-                            className="block w-full rounded-sm border border-white-500 bg-gradient-to-r from-cyan-500 to-pink-500 px-12 py-3 text-sm font-medium text-white hover:bg-transparent hover:text-gray-200 focus:ring-3 focus:outline-none sm:w-auto "
+                            className="block w-full rounded-sm border border-white-500 bg-gradient-to-r from-cyan-900 to-pink-900 px-12 py-3 text-sm font-medium text-white hover:bg-transparent hover:text-gray-200 focus:ring-3 focus:outline-none sm:w-auto "
                             href="https://www.tiktok.com/@garimpostyle_"
                         >
                             Siga no TikTok
@@ -81,7 +80,6 @@ export default function Hero() {
                 </>
             ),
         },
-        // Slide 4: Instagram (novo gradiente com cores da logo, texto branco)
         {
             content: (
                 <>
@@ -95,7 +93,7 @@ export default function Hero() {
                     </p>
                     <div className="mt-8 flex flex-wrap justify-center gap-4">
                         <a
-                            className="block w-full rounded-sm border border-white bg-gradient-to-r from-red-500 via-purple-500  to-blue-600 px-12 py-3 text-sm font-medium text-white hover:bg-transparent hover:text-gray-200 focus:ring-3 focus:outline-none sm:w-auto"
+                            className="block w-full rounded-sm border border-white bg-gradient-to-r from-red-500 via-purple-900  to-blue-900 px-12 py-3 text-sm font-medium text-white hover:bg-transparent hover:text-gray-200 focus:ring-3 focus:outline-none sm:w-auto"
                             href="https://www.instagram.com/garimpo_style_/"
                         >
                             Siga no Instagram
@@ -121,7 +119,7 @@ export default function Hero() {
     };
 
     return (
-        <section className="bg-gray-900 w-full max-w-5xl flex flex-col justify-center items-center rounded relative">
+        <section className="bg-gray-950 w-full max-w-5xl flex flex-col justify-center items-center rounded relative">
             <div className="w-full overflow-hidden">
                 <div
                     className="flex transition-transform duration-500 ease-in-out"
@@ -153,7 +151,7 @@ export default function Hero() {
                         onClick={() => goToSlide(index)}
                         className={`w-3 h-3 rounded-full ${
                             currentSlide === index
-                                ? "bg-white"
+                                ? "bg-yellow-500"
                                 : "bg-gray-600"
                         }`}
                     />

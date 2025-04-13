@@ -8,7 +8,7 @@ function Insta(props) {
             xmlns="http://www.w3.org/2000/svg"
             {...props}
         >
-            <g fill="#0F0F0F">
+            <g fill="#FFF">
                 <path
                     fillRule="evenodd"
                     clipRule="evenodd"

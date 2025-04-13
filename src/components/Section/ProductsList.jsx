@@ -1,5 +1,5 @@
-import Product from './Product';
-import { getDataBySlug } from '../../lib/data';
+import Product from "./Product";
+import { getDataBySlug } from "../../lib/data";
 
 export default async function ProductsList({
     slug,
@@ -14,7 +14,7 @@ export default async function ProductsList({
                 <h1 className="text-2xl">{field}</h1>
                 <a
                     href={`/${link}`}
-                    className="text-gray-400"
+                    className="text-neutral-400"
                 >
                     Ver todos
                 </a>
