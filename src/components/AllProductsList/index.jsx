@@ -1,9 +1,8 @@
-import Product from '../Section/Product';
+import Product from "../Section/Product";
 
 export default function AllProductsList({
     products = [],
-    ctg = '',
-    name = '',
+    name = "",
 }) {
     return (
         <section class="flex flex-col gap-8 justify-center items-center px-6">

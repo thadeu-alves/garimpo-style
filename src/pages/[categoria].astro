@@ -5,42 +5,40 @@ import {getAllCategories, getDataBySlug} from '../lib/data.js';
 import AllProductsList from '../components/AllProductsList/index.jsx';
 import Header from '../components/Header';
 import Footer from '../components/Footer';
-import { nan } from 'astro:schema';
-
+import type { nan } from 'astro:schema';
 export interface Category {
   url: string;
   title: string;
   slug: string;
 }
 
-const {categoria} = Astro.params;
 
 export async function getStaticPaths() {
     const allCategorias = await getAllCategories() as Category[];
-    const allCategoriesUrl = allCategorias.map((e) => e.url);
-  
-  return allCategoriesUrl.map(categoria => ({
-    params: { categoria },
-  }));
+    
+    return await Promise.all(
+        allCategorias.map(async ({url, slug, title}) => {
+            const products = await getDataBySlug(slug);
+            return {
+                params: { categoria: url },
+                props: {
+                    title,
+                    products,
+                    slug
+                }
+            };
+        })
+    );
 }
 
-let tag = "";
-let name = "";
+const {categoria} = Astro.params;
+const {title, products} = Astro.props;
 
-const allCategorias = await getAllCategories() as Category[];
-allCategorias.map((e:Category) => {
-    if(e.url == categoria){
-        tag = e.slug;
-        name = e.title;
-    }
-})
 
-const products = await getDataBySlug(tag);
 ---
 
 <Layout>
     <Header />
-    <div class="mt-10"></div>
-    <AllProductsList products={products} ctg={categoria} name={name}/>
+    <AllProductsList products={products} name={title} transition:name="products"/>
     <Footer />
 </Layout>

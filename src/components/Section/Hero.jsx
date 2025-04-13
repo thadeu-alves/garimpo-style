@@ -4,7 +4,6 @@ export default function Hero() {
     const [currentSlide, setCurrentSlide] = useState(0);
 
     const slides = [
-        // Slide 1: Mantido exatamente como está
         {
             content: (
                 <>
@@ -37,7 +36,6 @@ export default function Hero() {
                 </>
             ),
         },
-        // Slide 2: Shopee (mantido, com cor laranja atual)
         {
             content: (
                 <>
@@ -74,7 +72,7 @@ export default function Hero() {
                     </p>
                     <div className="mt-8 flex flex-wrap justify-center gap-4">
                         <a
-                            className="block w-full rounded-sm border border-white-500 bg-gradient-to-r from-cyan-500 to-pink-500 px-12 py-3 text-sm font-medium text-white hover:bg-transparent hover:text-gray-200 focus:ring-3 focus:outline-none sm:w-auto"
+                            className="block w-full rounded-sm border border-white-500 bg-gradient-to-r from-cyan-500 to-pink-500 px-12 py-3 text-sm font-medium text-white hover:bg-transparent hover:text-gray-200 focus:ring-3 focus:outline-none sm:w-auto "
                             href="https://www.tiktok.com/@garimpostyle_"
                         >
                             Siga no TikTok
