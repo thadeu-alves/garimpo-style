@@ -2,6 +2,11 @@ import React, { useState, useEffect } from "react";
 
 export default function Hero() {
     const [currentSlide, setCurrentSlide] = useState(0);
+    const [isDragging, setIsDragging] = useState(false);
+    const [startPos, setStartPos] = useState(0);
+    const [currentTranslate, setCurrentTranslate] =
+        useState(0);
+    const [prevTranslate, setPrevTranslate] = useState(0);
 
     const slides = [
         {
@@ -106,27 +111,82 @@ export default function Hero() {
 
     useEffect(() => {
         const timer = setInterval(() => {
-            setCurrentSlide(
-                (prev) => (prev + 1) % slides.length
-            );
-        }, 5000); // Muda a cada 5 segundos
+            if (!isDragging) {
+                setCurrentSlide(
+                    (prev) => (prev + 1) % slides.length
+                );
+            }
+        }, 5000);
 
         return () => clearInterval(timer);
-    }, [slides.length]);
+    }, [isDragging, slides.length]);
 
     const goToSlide = (index) => {
         setCurrentSlide(index);
+        setCurrentTranslate(0);
+        setPrevTranslate(0);
+    };
+
+    const handleDragStart = (e) => {
+        setIsDragging(true);
+        const clientX = e.type.includes("touch")
+            ? e.touches[0].clientX
+            : e.clientX;
+        setStartPos(clientX);
+        setCurrentTranslate(prevTranslate);
+    };
+
+    const handleDragMove = (e) => {
+        if (isDragging) {
+            const clientX = e.type.includes("touch")
+                ? e.touches[0].clientX
+                : e.clientX;
+            const currentPosition = clientX;
+            setCurrentTranslate(
+                prevTranslate + currentPosition - startPos
+            );
+        }
+    };
+
+    const handleDragEnd = () => {
+        setIsDragging(false);
+        const movedBy = currentTranslate - prevTranslate;
+        const threshold = window.innerWidth / 4;
+
+        if (
+            movedBy < -threshold &&
+            currentSlide < slides.length - 1
+        ) {
+            setCurrentSlide(currentSlide + 1);
+        } else if (
+            movedBy > threshold &&
+            currentSlide > 0
+        ) {
+            setCurrentSlide(currentSlide - 1);
+        }
+
+        setCurrentTranslate(0);
+        setPrevTranslate(0);
     };
 
     return (
         <section className="bg-gray-950 w-full max-w-5xl flex flex-col justify-center items-center rounded relative">
-            <div className="w-full overflow-hidden">
+            <div
+                className="w-full overflow-hidden"
+                onMouseDown={handleDragStart}
+                onMouseMove={handleDragMove}
+                onMouseUp={handleDragEnd}
+                onMouseLeave={handleDragEnd}
+                onTouchStart={handleDragStart}
+                onTouchMove={handleDragMove}
+                onTouchEnd={handleDragEnd}
+            >
                 <div
                     className="flex transition-transform duration-500 ease-in-out"
                     style={{
-                        transform: `translateX(-${
+                        transform: `translateX(calc(-${
                             currentSlide * 100
-                        }%)`,
+                        }% + ${currentTranslate}px))`,
                     }}
                 >
                     {slides.map((slide, index) => (
