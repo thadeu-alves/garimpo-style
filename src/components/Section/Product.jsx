@@ -5,7 +5,7 @@ export default function Product({ object }) {
                 <div className="relative w-full aspect-square">
                     <img
                         src={object.image.url}
-                        className="w-full h-52 max-h-52 object-cover group-hover:opacity-85 md:max-w-60"
+                        className="w-full h-52 max-h-52 object-cover group-hover:opacity-85 md:max-w-60 lg:max-w-none lg:h-full lg:max-h-60"
                         alt={object.title}
                     />
                 </div>
