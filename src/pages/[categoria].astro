@@ -5,6 +5,7 @@ import {getAllCategories, getDataBySlug} from '../lib/data.js';
 import Header from '../components/Header';
 import Footer from '../components/Footer';
 import Product from '../components/Section/Product';
+import SEO from '../components/SEO.astro';
 export interface Category {
   url: string;
   title: string;
@@ -43,6 +44,12 @@ const {title, products} = Astro.props;
 
 
 ---
+
+<SEO 
+  title={`${title} Old Money | Garimpo Style`} 
+  description="Descubra as melhores peças de moda masculina elegante cuidadosamente selecionadas para homens sofisticados e old money."
+  canonical="https://garimpostyle.netlify.app/"
+/>
 
 <Layout>
     <Header />

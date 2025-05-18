@@ -8,10 +8,19 @@ import {getAllCategories} from '../lib/data.js'
 import Hero from '../components/Section/Hero';
 import ProductsList from '../components/Section/ProductsList';
 import type { Category } from './[categoria].astro';
+import SEO from '../components/SEO.astro';
 
 
 const allCategorias = await getAllCategories();
+
+
 ---
+
+<SEO 
+  title="Moda Masculina Elegante e Old Money | Garimpo Style" 
+  description="Descubra as melhores peças de moda masculina elegante cuidadosamente selecionadas para homens sofisticados e old money."
+  canonical="https://garimpostyle.netlify.app/"
+/>
 
 <Layout>
 	<Header />

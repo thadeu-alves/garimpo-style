@@ -1,0 +1,23 @@
+---
+const { title, description, canonical } = Astro.props;
+---
+<!-- Primary Meta Tags -->
+<title>{title} | Garimpo Style - Moda Masculina Elegante</title>
+<meta name="description" content={description} />
+
+<!-- Open Graph / Facebook -->
+<meta property="og:type" content="website" />
+<meta property="og:url" content={canonical || Astro.url.href} />
+<meta property="og:title" content={title} />
+<meta property="og:description" content={description} />
+<meta property="og:image" content="/social-share.jpg" />
+
+<!-- Twitter -->
+<meta property="twitter:card" content="summary_large_image" />
+<meta property="twitter:url" content={canonical || Astro.url.href} />
+<meta property="twitter:title" content={title} />
+<meta property="twitter:description" content={description} />
+<meta property="twitter:image" content="/social-share.jpg" />
+
+<!-- Canonical URL -->
+<link rel="canonical" href={canonical || Astro.url.href} />

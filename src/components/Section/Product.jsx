@@ -6,7 +6,7 @@ export default function Product({ object }) {
                     <img
                         src={object.image.url}
                         className="w-full h-52 max-h-52 object-cover group-hover:opacity-85 md:max-w-60 lg:max-w-none lg:h-full lg:max-h-60"
-                        alt={object.title}
+                        alt={object.title + object.short}
                     />
                 </div>
                 <h1 className="text-white text-xs sm:text-lg pt-3 line-clamp-2">
