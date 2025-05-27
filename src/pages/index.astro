@@ -4,7 +4,7 @@ import Layout from '../layouts/Layout.astro';
 import Header from '../components/Header/index.jsx';
 import Section from '../components/Section/index.jsx';
 import Footer from '../components/Footer/index.jsx';
-import {getAllCategories} from '../lib/data.js'
+import {getAllCategories, getDataBySlug} from '../lib/data.js'
 import Hero from '../components/Section/Hero';
 import ProductsList from '../components/Section/ProductsList';
 import type { Category } from './[categoria].astro';
@@ -37,10 +37,11 @@ const allCategorias = await getAllCategories();
                 exclusiva de todos os produtos
                 disponíveis.
             </p>
-            {allCategorias.map((c : Category) => {
+            {allCategorias.map(async (c : Category) => {
+                const products = await getDataBySlug(c.slug);
                 return (
                     <ProductsList
-                        slug={c.slug}
+                        products={products}
                         field={c.title}
                         link={c.url}
                     />

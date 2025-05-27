@@ -1,13 +1,10 @@
 import Product from "./Product";
-import { getDataBySlug } from "../../lib/data";
 
 export default async function ProductsList({
-    slug,
+    products,
     field,
     link,
 }) {
-    const products = await getDataBySlug(slug);
-
     return (
         <div className="mt-6">
             <div className="flex items-center justify-between mb-4 text-gray-200">
@@ -22,7 +19,12 @@ export default async function ProductsList({
 
             <div className="w-full grid grid-cols-2 gap-3 lg:grid-cols-4">
                 {products.slice(0, 4).map((product) => {
-                    return <Product object={product} />;
+                    return (
+                        <Product
+                            object={product}
+                            key={product.id}
+                        />
+                    );
                 })}
             </div>
         </div>

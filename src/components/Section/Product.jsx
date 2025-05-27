@@ -1,6 +1,13 @@
+import { handleDiscord } from "../../lib/discord";
+
 export default function Product({ object }) {
     return (
-        <a href={object.link}>
+        <a
+            href={object.link}
+            onClick={() => {
+                handleDiscord(object.title);
+            }}
+        >
             <div className="bg-gray-950 rounded overflow-hidden text-center flex flex-col gap-1 shadow-2xl group w-full h-full">
                 <div className="relative w-full aspect-square">
                     <img
