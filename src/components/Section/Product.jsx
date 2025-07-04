@@ -1,3 +1,4 @@
+import Image from "astro/components/Image.astro";
 import { handleDiscord } from "../../lib/discord";
 
 export default function Product({ object }) {
