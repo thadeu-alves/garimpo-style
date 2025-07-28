@@ -1,6 +1,9 @@
+import.meta.env.BASE_URL;
+import.meta.env.TOKEN;
+
 export async function getAllData() {
-    const API_URL = 'https://graphql.datocms.com/';
-    const API_TOKEN = 'b9b8e250b7d589467a15aacd45e236';
+    const API_URL = BASE_URL;
+    const API_TOKEN = TOKEN;
 
     const query = `
 	{
@@ -17,9 +20,9 @@ export async function getAllData() {
 	`;
 
     const response = await fetch(API_URL, {
-        method: 'POST',
+        method: "POST",
         headers: {
-            'Content-Type': 'application/json',
+            "Content-Type": "application/json",
             Authorization: `Bearer ${API_TOKEN}`,
         },
         body: JSON.stringify({ query }),
@@ -32,8 +35,8 @@ export async function getAllData() {
 }
 
 export async function getDataBySlug(slug) {
-    const API_URL = 'https://graphql.datocms.com/';
-    const API_TOKEN = 'b9b8e250b7d589467a15aacd45e236';
+    const API_URL = "https://graphql.datocms.com/";
+    const API_TOKEN = "b9b8e250b7d589467a15aacd45e236";
 
     const query = `
 	{
@@ -50,9 +53,9 @@ export async function getDataBySlug(slug) {
 	`;
 
     const response = await fetch(API_URL, {
-        method: 'POST',
+        method: "POST",
         headers: {
-            'Content-Type': 'application/json',
+            "Content-Type": "application/json",
             Authorization: `Bearer ${API_TOKEN}`,
         },
         body: JSON.stringify({ query }),
@@ -65,8 +68,8 @@ export async function getDataBySlug(slug) {
 }
 
 export async function getAllCategories() {
-    const API_URL = 'https://graphql.datocms.com/';
-    const API_TOKEN = 'b9b8e250b7d589467a15aacd45e236';
+    const API_URL = "https://graphql.datocms.com/";
+    const API_TOKEN = "b9b8e250b7d589467a15aacd45e236";
 
     const query = `
 	{
@@ -79,9 +82,9 @@ export async function getAllCategories() {
 	`;
 
     const response = await fetch(API_URL, {
-        method: 'POST',
+        method: "POST",
         headers: {
-            'Content-Type': 'application/json',
+            "Content-Type": "application/json",
             Authorization: `Bearer ${API_TOKEN}`,
         },
         body: JSON.stringify({ query }),
