@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import { useState, useEffect } from "react";
 
 export default function Hero() {
     const [currentSlide, setCurrentSlide] = useState(0);
@@ -12,14 +12,14 @@ export default function Hero() {
         {
             content: (
                 <>
-                    <h1 className="font-serif text-white bg-clip-text text-4xl font-extrabold lg:text-5xl">
+                    <h1 className="font-serif text-white bg-clip-text text-2xl font-extrabold lg:text-5xl">
                         Seu Anúncio,
                         <span className="sm:block">
                             {" "}
                             Nosso Palco de Elegância.{" "}
                         </span>
                     </h1>
-                    <p className="font-sans text-md text-gray-300 mx-auto mt-4 max-w-xl sm:text-xl/relaxed">
+                    <p className="font-sans text-sm text-gray-300 mx-auto mt-4 max-w-xl sm:text-xl/relaxed lg:text-md">
                         Destaque sua marca em um ambiente
                         que respira sofisticação e
                         exclusividade.
@@ -192,9 +192,9 @@ export default function Hero() {
                     {slides.map((slide, index) => (
                         <div
                             key={index}
-                            className="w-full flex-shrink-0 flex flex-col justify-center"
+                            className="w-full flex-shrink-0 flex flex-col justify-center max-h-100 lg:max-lg-900"
                         >
-                            <div className="py-24 px-8 flex items-center md:py-32 h-full">
+                            <div className="py-24 px-8 flex items-center md:py-32 h-full max-h-120 ">
                                 <div className="mx-auto max-w-3xl text-center flex flex-col justify-between ">
                                     {slide.content}
                                 </div>
